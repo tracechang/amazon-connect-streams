@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="amazon-connect-1.6.1-3-g87b5c12.js"></script>
+  </head>
+  <!-- Add the call to init() as an onload so it will only run once the page is loaded -->
+  <body onload="init()">
+    <div id="container-div" style="width: 400px;height: 800px;"></div>
+    <script type="text/javascript">
+      var containerDiv = document.getElementById("container-div");
+      var instanceURL = "https://gieup.my.connect.aws/ccp-v2";
+      // initialize the streams api
+      function init() {
+        // initialize the ccp
+        connect.core.initCCP(containerDiv, {
+          ccpUrl: instanceURL,            // REQUIRED
+          loginPopup: true,               // optional, defaults to `true`
+          loginPopupAutoClose: true,      // optional, defaults to `true`
+          loginOptions: {                 // optional, if provided opens login in new window
+            autoClose: true,              // optional, defaults to `false`
+            height: 600,                  // optional, defaults to 578
+            width: 400,                   // optional, defaults to 433
+            top: 0,                       // optional, defaults to 0
+            left: 0                       // optional, defaults to 0
+          },
+          region: "us-west-2",         // REQUIRED for `CHAT`, optional otherwise
+          softphone: {                    // optional
+            allowFramedSoftphone: true,   // optional
+            disableRingtone: false,       // optional
+            ringtoneUrl: "./ringtone.mp3" // optional
+           }
+         });
+      }
+    </script>
+  </body>
+</html>
